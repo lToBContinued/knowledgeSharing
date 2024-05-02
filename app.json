@@ -1,0 +1,33 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/index/index",
+    "pages/sound/sound",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "口琴百科",
+    "navigationBarBackgroundColor": "#ffffff"
+  },
+  "style": "v2",
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "百科",
+        "iconPath": "./icons/icon_baike.png",
+        "selectedIconPath": "./icons/select_icon_baike.png"
+      },
+      {
+        "pagePath": "pages/sound/sound",
+        "text": "音乐欣赏",
+        "iconPath": "./icons/icon-sound.png",
+        "selectedIconPath": "./icons/select_icon-sound.png"
+      }
+    ]
+  }
+}

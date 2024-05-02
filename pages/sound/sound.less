@@ -1,0 +1,142 @@
+page {
+	background-color: #f1f1f1;
+}
+
+// 轮播图
+swiper {
+	height: 400rpx;
+
+	image {
+		width: 100%;
+		height: 100%;
+	}
+}
+
+// 音乐列表
+.musicContent {
+	margin-bottom: 170rpx;
+
+	.part {
+		margin: 16rpx;
+		padding: 16rpx;
+		border-radius: 16rpx;
+		background-color: #fff;
+
+		.part-title {
+			display: block;
+			font-size: 36rpx;
+			font-weight: 700;
+		}
+
+		.part-title::after {
+			content: ' >';
+			margin-left: 10rpx;
+			font-weight: 400;
+			color: #ccc;
+		}
+
+		.music-select {
+			display: flex;
+			align-items: center;
+			margin-top: 20rpx;
+
+			image {
+				width: 110rpx;
+				height: 110rpx;
+				border-radius: 10rpx;
+			}
+
+			.music-info {
+				margin-left: 20rpx;
+
+				.music-info-title {
+					margin-bottom: 8rpx;
+					font-size: 32rpx;
+				}
+
+				.music-info-singer {
+					font-size: 28rpx;
+					color: #666;
+				}
+			}
+		}
+	}
+}
+
+// --------------------------------------
+// 播放控件
+.player {
+	display: flex;
+	align-items: center;
+	position: fixed;
+	bottom: -1rpx;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 100%;
+	height: 130rpx;
+	background-color: #fff;
+
+	// 歌曲信息
+	// 歌曲封面
+	.cover {
+		width: 110rpx;
+		height: 110rpx;
+		margin-left: 12rpx;
+		margin-top: 16rpx;
+		border-radius: 10rpx;
+	}
+
+	.player-info {
+		margin-left: 20rpx;
+
+		// 歌曲名
+		.player-info-title {
+			font-size: 34rpx;
+			font-weight: 700;
+		}
+
+		// 歌手
+		.player-info-singer {
+			margin-top: 6rpx;
+			font-size: 28rpx;
+			color: #666;
+		}
+	}
+
+	// 控制台
+	.player-controls {
+		display: flex;
+		position: absolute;
+		right: 20rpx;
+
+		image {
+			width: 50rpx;
+			height: 50rpx;
+			margin-left: 30rpx;
+		}
+
+		// 播放和暂停
+		.isPlay {
+			display: none;
+		}
+	}
+
+	// 进度条
+	.body-view {
+		position: fixed;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		bottom: 120rpx;
+		width: 100%;
+		background-color: #fff;
+
+		.slider {
+			width: 70%;
+
+			slider {
+				margin: 0 10rpx;
+			}
+		}
+	}
+}
