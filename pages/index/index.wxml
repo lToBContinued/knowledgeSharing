@@ -1,245 +1,277 @@
 <view class="page">
-	<swiper class="header-swiper" indicator-dots indicator-color="rgba(0,0,0,.3)" indicator-active-color="#fff" circular autoplay>
-		<block wx:for="{{swiperImgUrls}}" wx:key="index">
-			<swiper-item>
-				<view class="swiper-item-wrapper">
-					<image class="swiper-item-pic" src="{{item}}" />
-				</view>
-			</swiper-item>
-		</block>
-	</swiper>
+  <swiper class="header-swiper" indicator-dots
+          indicator-color="rgba(0,0,0,.3)" indicator-active-color="#fff"
+          circular autoplay>
+    <block wx:for="{{swiperImgUrls}}" wx:key="index">
+      <swiper-item>
+        <view class="swiper-item-wrapper">
+          <image class="swiper-item-pic" src="{{item}}"/>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
 
-	<!-- 大标题模块 -->
-	<view class="bigtitle">
-		<view class="bigtitle-content">
-			<text class="bigtitle-text" selectable>口琴</text>
-			<text class="bigtitle-pinyin" selectable>[kǒu qín]</text>
-			<text class="bigtitle-subtitle" selectable>小型吹奏乐器</text>
-		</view>
-	</view>
+  <!-- 大标题模块 -->
+  <view class="bigtitle">
+    <view class="bigtitle-content">
+      <text class="bigtitle-text" selectable>口琴</text>
+      <text class="bigtitle-pinyin" selectable>[kǒu qín]</text>
+      <text class="bigtitle-subtitle" selectable>小型吹奏乐器</text>
+    </view>
+  </view>
 
-	<!-- 整体介绍部分 -->
-	<view class="general-intro">
-		<text class="text_indent" selectable>口琴，是一种小型吹奏乐器（英文Harmonica），用嘴吹或吸气，使金属簧片振动发声的多簧片乐器；在乐器分类上属于自由簧的吹奏乐器。其发声源是长度介于1.5～3.5cm的簧片而非空气柱。
-		</text>
-		<text class=" text_indent" selectable>口琴主要分为独奏口琴和合奏口琴，各自又有不同种类。其音域依种类、调性不同而略有差异。作为旋律性乐器，口琴可以吹奏至少两种和弦，高水平的乐手可以在口琴在遵循口琴结构的前提下同时吹出两个相对独立的声部。因其小巧的体积被称为“口袋里的钢琴”。</text>
-		<view class="general-intro-footer">
-			<view class="general-intro-footer-title">
-				<text selectable>中文名</text>
-				<text selectable>外文名</text>
-				<text selectable>性质</text>
-				<text selectable>其他用途</text>
-			</view>
-			<view class="general-intro-footer-value" max-lines="3" overflow="ellipsis">
-				<text selectable>口琴</text>
-				<text selectable>Harmonica / harp / Mouthorgan</text>
-				<text selectable>乐器</text>
-				<text selectable>调律</text>
-			</view>
-		</view>
-	</view>
+  <!-- 整体介绍部分 -->
+  <view class="general-intro">
+    <text class="text_indent" selectable>口琴，是一种小型吹奏乐器（英文Harmonica），用嘴吹或吸气，使金属簧片振动发声的多簧片乐器；在乐器分类上属于自由簧的吹奏乐器。其发声源是长度介于1.5～3.5cm的簧片而非空气柱。
+    </text>
+    <text class=" text_indent" selectable>口琴主要分为独奏口琴和合奏口琴，各自又有不同种类。其音域依种类、调性不同而略有差异。作为旋律性乐器，口琴可以吹奏至少两种和弦，高水平的乐手可以在口琴在遵循口琴结构的前提下同时吹出两个相对独立的声部。因其小巧的体积被称为“口袋里的钢琴”。</text>
+    <view class="general-intro-footer">
+      <view class="general-intro-footer-title">
+        <text selectable>中文名</text>
+        <text selectable>外文名</text>
+        <text selectable>性质</text>
+        <text selectable>其他用途</text>
+      </view>
+      <view class="general-intro-footer-value" max-lines="3"
+            overflow="ellipsis">
+        <text selectable>口琴</text>
+        <text selectable>Harmonica / harp / Mouthorgan</text>
+        <text selectable>乐器</text>
+        <text selectable>调律</text>
+      </view>
+    </view>
+  </view>
 
-	<!-- 相关视频 -->
-	<view class="relate-videos">
-		<view class="title">相关视频</view>
-		<swiper class="videos-swiper" circular>
-			<block wx:for="{{videos}}" wx:key="index">
-				<swiper-item>
-					<view class="videos-item-wrapper">
-						<video src="{{item.url}}" enable-play-gesture controls />
-						<view class="video-title">{{item.title}}</view>
-					</view>
-				</swiper-item>
-			</block>
-		</swiper>
-	</view>
+  <!-- 相关视频 -->
+  <view class="relate-videos">
+    <view class="title">相关视频</view>
+    <swiper class="videos-swiper" circular>
+      <block wx:for="{{videos}}" wx:key="index">
+        <swiper-item>
+          <view class="videos-item-wrapper">
+            <video src="{{item.url}}" enable-play-gesture controls/>
+            <view class="video-title">{{item.title}}</view>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
 
-	<!-- 更多介绍 -->
-	<view class="more">
-		<!-- 导航栏 -->
-		<view class="navbar-wrap">
-			<view class="column {{isFixedTop?'fixed':''}}" id="navbar">
-				<block wx:for="{{navItems}}" wx:key="index">
-					<!-- 用三目运算符判断，将被点击的标签添加上active的样式 -->
-					<view class="block {{index===activeIndex?'active':''}}" bind:tap="clickTab" data-index="{{index}}">
-						{{item}}
-					</view>
-				</block>
-			</view>
-			<!-- 用于吸顶后 占位用的 -->
-			<view class="column" wx:if="{{isFixedTop}}"></view>
-		</view>
+  <!-- 更多介绍 -->
+  <view class="more">
+    <!-- 导航栏 -->
+    <view class="navbar-wrap">
+      <view class="column {{isFixedTop?'fixed':''}}" id="navbar">
+        <block wx:for="{{navItems}}" wx:key="index">
+          <!-- 用三目运算符判断，将被点击的标签添加上active的样式 -->
+          <view class="block {{index===activeIndex?'active':''}}"
+                bind:tap="clickTab" data-index="{{index}}">
+            {{item}}
+          </view>
+        </block>
+      </view>
+      <!-- 用于吸顶后 占位用的 -->
+      <view class="column" wx:if="{{isFixedTop}}"></view>
+    </view>
 
-		<!-- 详细介绍 -->
-		<!-- 历史部分 -->
-		<view class="history {{0===activeIndex?'':'isDisplay'}}">
-			<text class="title" selectable>历史背景</text>
-			<text class="text_indent" selectable>口琴的由来有一段饶有兴味的逸闻。1821年的一天，德国有个名叫布希曼的音乐家，在托斯恩小城散步，偶然发现一个农家女孩坐在门口玩耍，一双胖乎乎的小手拿着一把贴着一张硬纸的木梳放在嘴边吹着。布希曼心里一亮，回去后，根据中国古代笙和罗马笛的发音和吹奏原理，用象牙雕刻成“药丸筒”似的口琴，这就是世界上最早的口琴。1857年，布希曼和托斯恩创立专制口琴的公司，制造出第一批口琴，并很快销售到欧美各地。到了1885年经过不断的改进，口琴才具备了现代的特点。口琴追溯其根源其实是调律用的工具。自由簧气鸣乐器。为小型的吹奏乐器。琴身呈长方形，其大小、长短各不相同，形制甚多。常见的为十孔口琴。此外还有半音阶口琴、复音口琴、贝斯口琴、和弦口琴等。
-				口琴源于中国，早期称为笙，由竹片发声的乐器，当时风靡亚洲；十八世纪后期，笙传入欧洲，流行于整个音乐界，并形成了当代口琴的构架。</text>
-			<view class="parImg">
-				<text class="text_indent" selectable>口琴的由来有一段饶有兴味的逸闻。1821年的一天，德国有个名叫布希曼的音乐家，在托斯恩小城散步，偶然发现一个农家女孩坐在门口玩耍，一双胖乎乎的小手拿着一把贴着一张硬纸的木梳放在嘴边吹着。布希曼心里一亮，回去后，根据中国古代笙和罗马笛的发音和吹奏原理，用象牙雕刻成“药丸筒”似的口琴，这就是世界上最早的口琴。1857年，布希曼和托斯恩创立专制口琴的公司，制造出第一批口琴，并很快销售到欧美各地。到了1885年经过不断的改进，口琴才具备了现代的特点。口琴追溯其根源其实是调律用的工具。自由簧气鸣乐器。为小型的吹奏乐器。琴身呈长方形，其大小、长短各不相同，形制甚多。常见的为十孔口琴。此外还有半音阶口琴、复音口琴、贝斯口琴、和弦口琴等。
-					口琴源于中国，早期称为笙，由竹片发声的乐器，当时风靡亚洲；十八世纪后期，笙传入欧洲，流行于整个音乐界，并形成了当代口琴的构架。</text>
-				<view class="img-box">
-					<image src="http://wtsmartweb.hkfree.work/images/article_pic_1.jpg" mode="widthFix" />
-					<text selectable>口 琴</text>
-				</view>
-			</view>
-			<text class="text_indent" selectable>比起其他正统乐器而言，口琴的沿革其实相当的短浅，而且世界各地的版本不一，这也是个人为何在此仅能浅论而难能深究的主要原因。在参考过许多版本后，有些记载看法倒是放诸四海皆一致：「笙」为我国古乐器八音之一，是一种具有自由律动的簧乐器，也为最早的一种具有和声的乐器，所以它被认为是近代口琴的先驱。笙在十八世纪时，流传到欧洲，经过一段不算短的时期渐渐地人们从它的结构而研究发明了口琴，簧风琴(Reed
-				Organ)和萨克斯风 (Saxophone)，因而笙也被公认是它们的鼻祖。</text>
-			<text class="text_indent" selectable>最早的簧片型乐器源于中国，大约数千年前，被称为笙“Sheng”。这种由竹簧片发声的乐器很快风靡亚洲，在传统音乐中占据重要地位。18世纪后期，笙传入欧洲，很快在音乐界流行开来。远在3000多年前的商代，我国就已有了笙的雏型。在出土的殷（公元前1401～前1122）墟甲骨文中有“和”的记载。“和”即是后世小笙的前身。《尔雅·释乐》记载：“大笙谓之巢，小者谓之和。”</text>
-			<text class="text_indent" selectable>19世纪，欧洲乐匠们开始尝试用金属簧片来代替笙中的木质簧片。大约在1820年，一名叫Christian
-				Friedrich
-				Buschmann的年轻乐匠打造出了第一支采用金属簧片的口琴（当时称为Aura）。这种Aura以它独特的魅力而受到音乐家们的广泛好评；但当时的A-ura却只有吹音，而没有吸音。</text>
-			<text class="text_indent" selectable>大约在1825年，欧洲人Richter发明了一种乐器，成为了现代口琴的雏形。该乐器拥有10个吹孔和两张簧板，每张簧板上由10片簧片。这样，在每个吹孔上通过吹气和吸气都可以发音，Richter所选择的这些音符也就是全音阶口琴（Diatonic
-				Harmonica）的音阶排列，有时也叫做标准Richter音阶。</text>
-			<text class="text_indent" selectable>口琴的大量生产是在1829年的Vienna，很快在其他城市也出现了口琴制造厂。在德国小镇Trossingen，钟表匠Christian
-				Messner和他的表兄Christian Weiss利用业余时间来制造口琴，但很快他们的口琴生意便红火了起来。几年后，当地另一位钟表匠Matthias
-				Hohner开始拜访
-				Messner和Weiss，并学到了口琴的制作工艺，同时也开始了自己口琴生意。</text>
-			<view class="parImg">
-				<text class="text_indent" selectable>显然，Matthias
-					Hohner并不是一名很棒的口琴手，但他却是一位出色的商人。在市场是，Matthias击败许多竞争者，并且开始向美国出口口琴，很快美国便成了他最大的市场。1900年，Matthias将生意移交给了5个儿子管理。</text>
-				<view class="img-box">
-					<image src="http://wtsmartweb.hkfree.work/images/article_pic_2.jpg" mode="widthFix" />
-					<text selectable>喇叭口琴</text>
-				</view>
-			</view>
-			<text class="text_indent" selectable>在20世纪的前半叶，口琴的流行度继续扩展延伸，与此同时口琴乐队也发展迅速。Hohner发展了半音阶口琴（Chromatic
-				Harmonica），通过控制一个按钮可以演奏出所有的音符。1930年，Larry Adler
-				成为最著名半音阶口琴手，这项荣誉一直保持到2001他去世后。</text>
-			<text class="text_indent" selectable>在美国，口琴作为蓝调乐器而闻名于世。二十世纪30年代以及40年代前期的代表为John
-				Lee "Sonny Boy" Williamson。二次世界大战之后，Chicago成为蓝调音乐的中心，这里聚集了许多杰出乐手，如Rice
-				Miller (Sonny Boy Williamsom II)和Little Walter。许多人一直认为Little
-				Walter是最著名的蓝调口琴乐手。Little
-				Walter于1968去世。</text>
-			<text class="text_indent" selectable>在口琴作为蓝调乐器而极度流行的同时，也有许多人通过Bob
-				Dylan的民俗音乐开始熟悉口琴。许多杰出口琴手像Kym Wilson和Jerry
-				Portnoy继续发展蓝调口琴风格，而其他像Howard
-				Levy和Brendan Power则形成了一种新型且富有激情的口琴演奏风格。</text>
-		</view>
+    <!-- 详细介绍 -->
+    <!-- 历史部分 -->
+    <view class="history {{0===activeIndex?'':'isDisplay'}}">
+      <text class="title" selectable>历史背景</text>
+      <text class="text_indent" selectable>口琴的由来有一段饶有兴味的逸闻。1821年的一天，德国有个名叫布希曼的音乐家，在托斯恩小城散步，偶然发现一个农家女孩坐在门口玩耍，一双胖乎乎的小手拿着一把贴着一张硬纸的木梳放在嘴边吹着。布希曼心里一亮，回去后，根据中国古代笙和罗马笛的发音和吹奏原理，用象牙雕刻成“药丸筒”似的口琴，这就是世界上最早的口琴。1857年，布希曼和托斯恩创立专制口琴的公司，制造出第一批口琴，并很快销售到欧美各地。到了1885年经过不断的改进，口琴才具备了现代的特点。口琴追溯其根源其实是调律用的工具。自由簧气鸣乐器。为小型的吹奏乐器。琴身呈长方形，其大小、长短各不相同，形制甚多。常见的为十孔口琴。此外还有半音阶口琴、复音口琴、贝斯口琴、和弦口琴等。
+        口琴源于中国，早期称为笙，由竹片发声的乐器，当时风靡亚洲；十八世纪后期，笙传入欧洲，流行于整个音乐界，并形成了当代口琴的构架。</text>
+      <view class="parImg">
+        <text class="text_indent" selectable>口琴的由来有一段饶有兴味的逸闻。1821年的一天，德国有个名叫布希曼的音乐家，在托斯恩小城散步，偶然发现一个农家女孩坐在门口玩耍，一双胖乎乎的小手拿着一把贴着一张硬纸的木梳放在嘴边吹着。布希曼心里一亮，回去后，根据中国古代笙和罗马笛的发音和吹奏原理，用象牙雕刻成“药丸筒”似的口琴，这就是世界上最早的口琴。1857年，布希曼和托斯恩创立专制口琴的公司，制造出第一批口琴，并很快销售到欧美各地。到了1885年经过不断的改进，口琴才具备了现代的特点。口琴追溯其根源其实是调律用的工具。自由簧气鸣乐器。为小型的吹奏乐器。琴身呈长方形，其大小、长短各不相同，形制甚多。常见的为十孔口琴。此外还有半音阶口琴、复音口琴、贝斯口琴、和弦口琴等。
+          口琴源于中国，早期称为笙，由竹片发声的乐器，当时风靡亚洲；十八世纪后期，笙传入欧洲，流行于整个音乐界，并形成了当代口琴的构架。</text>
+        <view class="img-box">
+          <image
+            src="http://wtsmartweb.hkfree.work/images/article_pic_1.jpg"
+            mode="widthFix"/>
+          <text selectable>口 琴</text>
+        </view>
+      </view>
+      <text class="text_indent" selectable>比起其他正统乐器而言，口琴的沿革其实相当的短浅，而且世界各地的版本不一，这也是个人为何在此仅能浅论而难能深究的主要原因。在参考过许多版本后，有些记载看法倒是放诸四海皆一致：「笙」为我国古乐器八音之一，是一种具有自由律动的簧乐器，也为最早的一种具有和声的乐器，所以它被认为是近代口琴的先驱。笙在十八世纪时，流传到欧洲，经过一段不算短的时期渐渐地人们从它的结构而研究发明了口琴，簧风琴(Reed
+        Organ)和萨克斯风 (Saxophone)，因而笙也被公认是它们的鼻祖。</text>
+      <text class="text_indent" selectable>最早的簧片型乐器源于中国，大约数千年前，被称为笙“Sheng”。这种由竹簧片发声的乐器很快风靡亚洲，在传统音乐中占据重要地位。18世纪后期，笙传入欧洲，很快在音乐界流行开来。远在3000多年前的商代，我国就已有了笙的雏型。在出土的殷（公元前1401～前1122）墟甲骨文中有“和”的记载。“和”即是后世小笙的前身。《尔雅·释乐》记载：“大笙谓之巢，小者谓之和。”</text>
+      <text class="text_indent" selectable>19世纪，欧洲乐匠们开始尝试用金属簧片来代替笙中的木质簧片。大约在1820年，一名叫Christian
+        Friedrich
+        Buschmann的年轻乐匠打造出了第一支采用金属簧片的口琴（当时称为Aura）。这种Aura以它独特的魅力而受到音乐家们的广泛好评；但当时的A-ura却只有吹音，而没有吸音。</text>
+      <text class="text_indent" selectable>大约在1825年，欧洲人Richter发明了一种乐器，成为了现代口琴的雏形。该乐器拥有10个吹孔和两张簧板，每张簧板上由10片簧片。这样，在每个吹孔上通过吹气和吸气都可以发音，Richter所选择的这些音符也就是全音阶口琴（Diatonic
+        Harmonica）的音阶排列，有时也叫做标准Richter音阶。</text>
+      <text class="text_indent" selectable>口琴的大量生产是在1829年的Vienna，很快在其他城市也出现了口琴制造厂。在德国小镇Trossingen，钟表匠Christian
+        Messner和他的表兄Christian
+        Weiss利用业余时间来制造口琴，但很快他们的口琴生意便红火了起来。几年后，当地另一位钟表匠Matthias
+        Hohner开始拜访
+        Messner和Weiss，并学到了口琴的制作工艺，同时也开始了自己口琴生意。</text>
+      <view class="parImg">
+        <text class="text_indent" selectable>显然，Matthias
+          Hohner并不是一名很棒的口琴手，但他却是一位出色的商人。在市场是，Matthias击败许多竞争者，并且开始向美国出口口琴，很快美国便成了他最大的市场。1900年，Matthias将生意移交给了5个儿子管理。</text>
+        <view class="img-box">
+          <image
+            src="http://wtsmartweb.hkfree.work/images/article_pic_2.jpg"
+            mode="widthFix"/>
+          <text selectable>喇叭口琴</text>
+        </view>
+      </view>
+      <text class="text_indent" selectable>在20世纪的前半叶，口琴的流行度继续扩展延伸，与此同时口琴乐队也发展迅速。Hohner发展了半音阶口琴（Chromatic
+        Harmonica），通过控制一个按钮可以演奏出所有的音符。1930年，Larry
+        Adler
+        成为最著名半音阶口琴手，这项荣誉一直保持到2001他去世后。</text>
+      <text class="text_indent" selectable>在美国，口琴作为蓝调乐器而闻名于世。二十世纪30年代以及40年代前期的代表为John
+        Lee "Sonny Boy"
+        Williamson。二次世界大战之后，Chicago成为蓝调音乐的中心，这里聚集了许多杰出乐手，如Rice
+        Miller (Sonny Boy Williamsom II)和Little Walter。许多人一直认为Little
+        Walter是最著名的蓝调口琴乐手。Little
+        Walter于1968去世。</text>
+      <text class="text_indent" selectable>在口琴作为蓝调乐器而极度流行的同时，也有许多人通过Bob
+        Dylan的民俗音乐开始熟悉口琴。许多杰出口琴手像Kym Wilson和Jerry
+        Portnoy继续发展蓝调口琴风格，而其他像Howard
+        Levy和Brendan
+        Power则形成了一种新型且富有激情的口琴演奏风格。</text>
+    </view>
 
-		<!-- 构造部分 -->
-		<view class="structure {{1===activeIndex?'':'isDisplay'}}">
-			<text class="title" selectable>构造</text>
-			<view class="parImg">
-				<text class="text_indent" selectable>布鲁斯口琴每孔装有一对簧片，演奏者呼气时发一音，吸气时发另一音；半音阶口琴每孔装有两对簧片，有按键与呼吸配合发出4个不同的音。而复音口琴相邻的上下两格音高相同，通过换孔吹吸来吹奏不同的音。口琴19世纪在德国发明，它是以从亚洲带入欧洲的某些口风琴为基础改进的。</text>
-				<view class="img-box">
-					<image src="http://wtsmartweb.hkfree.work/images/article_pic_3.jpg" mode="widthFix" />
-					<text selectable>口琴构造</text>
-				</view>
-			</view>
-			<text class="text_indent" selectable>口琴的演奏可以有很高的艺术性，技艺精湛的演奏家可以通过改变簧片的发音和气流的压力来制造多种效果。口琴多用于蓝调音乐及乡村民谣中，也在摇滚乐中使用，随着半音阶口琴和10孔口琴的超吹技术的出现，口琴也可以吹奏古典音乐以及一些爵士音乐。此外，严肃音乐作曲家也对口琴产生兴趣，并为之创作音乐，其中有D.米约的《口琴与乐队组曲》和沃恩·威廉斯的《口琴与乐队浪漫曲》等等。</text>
+    <!-- 构造部分 -->
+    <view class="structure {{1===activeIndex?'':'isDisplay'}}">
+      <text class="title" selectable>构造</text>
+      <view class="parImg">
+        <text class="text_indent" selectable>布鲁斯口琴每孔装有一对簧片，演奏者呼气时发一音，吸气时发另一音；半音阶口琴每孔装有两对簧片，有按键与呼吸配合发出4个不同的音。而复音口琴相邻的上下两格音高相同，通过换孔吹吸来吹奏不同的音。口琴19世纪在德国发明，它是以从亚洲带入欧洲的某些口风琴为基础改进的。</text>
+        <view class="img-box">
+          <image
+            src="http://wtsmartweb.hkfree.work/images/article_pic_3.jpg"
+            mode="widthFix"/>
+          <text selectable>口琴构造</text>
+        </view>
+      </view>
+      <text class="text_indent" selectable>口琴的演奏可以有很高的艺术性，技艺精湛的演奏家可以通过改变簧片的发音和气流的压力来制造多种效果。口琴多用于蓝调音乐及乡村民谣中，也在摇滚乐中使用，随着半音阶口琴和10孔口琴的超吹技术的出现，口琴也可以吹奏古典音乐以及一些爵士音乐。此外，严肃音乐作曲家也对口琴产生兴趣，并为之创作音乐，其中有D.米约的《口琴与乐队组曲》和沃恩·威廉斯的《口琴与乐队浪漫曲》等等。</text>
 
-			<text class="subtitle" selectable>布鲁斯十孔</text>
-			<text class="text_indent" selectable>这种口琴共有10个吹孔，每个孔里面有两个簧片。当吹气时，其中的一个簧片就开始振动，这便产生了一个音符。当你吸气时，另一个簧片开始振动，产生了另一个音符。因此说，每个吹孔能产生两个音符。实际上通过压音(bend)和超吹可以产生更多音符。布鲁斯口琴共由两片盖板(cover)、两片嵌有簧片(reed)的簧板(plate)以及琴格(comb)五部分组成，这5部分用螺丝组装后就是一把完整的口琴。</text>
-			<text class="text_indent" selectable>口琴是依靠簧片的振动发声的，而且在制作口琴的过程中，簧片被固定在簧板的间隙当中，制作精度很高；正因如此，口琴也需要保养清洁，以保持最佳的工作状态。</text>
+      <text class="subtitle" selectable>布鲁斯十孔</text>
+      <text class="text_indent" selectable>这种口琴共有10个吹孔，每个孔里面有两个簧片。当吹气时，其中的一个簧片就开始振动，这便产生了一个音符。当你吸气时，另一个簧片开始振动，产生了另一个音符。因此说，每个吹孔能产生两个音符。实际上通过压音(bend)和超吹可以产生更多音符。布鲁斯口琴共由两片盖板(cover)、两片嵌有簧片(reed)的簧板(plate)以及琴格(comb)五部分组成，这5部分用螺丝组装后就是一把完整的口琴。</text>
+      <text class="text_indent" selectable>口琴是依靠簧片的振动发声的，而且在制作口琴的过程中，簧片被固定在簧板的间隙当中，制作精度很高；正因如此，口琴也需要保养清洁，以保持最佳的工作状态。</text>
 
-			<text class="subtitle" selectable>半音阶</text>
-			<view class="parImg">
-				<text class="text_indent" selectable>半音阶口琴可说是一种最理想，表达力最完整的独奏乐器之一。它的音阶组织一如钢琴，除普通音外，尚加入一般口琴所没有的半音阶，无论任何调子都能用一具半音阶口琴奏出，加上科技发展的进步，半音阶口琴的结构与材料不断改善，便更容易学习和运用吹奏。半音阶口琴主要分别为十孔，十二孔，十四孔，十六孔四种。以十二孔的半音阶口琴最为多用，一具十二孔的C调半音阶口琴具备有三组的八度和完全的半音，其排列是按音阶的顺序分每四个孔一组八度。</text>
-				<view class="img-box">
-					<image src="http://wtsmartweb.hkfree.work/images/article_pic_4.jpg" mode="widthFix" />
-					<text selectable>半音阶口琴结构</text>
-				</view>
-			</view>
+      <text class="subtitle" selectable>半音阶</text>
+      <view class="parImg">
+        <text class="text_indent" selectable>半音阶口琴可说是一种最理想，表达力最完整的独奏乐器之一。它的音阶组织一如钢琴，除普通音外，尚加入一般口琴所没有的半音阶，无论任何调子都能用一具半音阶口琴奏出，加上科技发展的进步，半音阶口琴的结构与材料不断改善，便更容易学习和运用吹奏。半音阶口琴主要分别为十孔，十二孔，十四孔，十六孔四种。以十二孔的半音阶口琴最为多用，一具十二孔的C调半音阶口琴具备有三组的八度和完全的半音，其排列是按音阶的顺序分每四个孔一组八度。</text>
+        <view class="img-box">
+          <image
+            src="http://wtsmartweb.hkfree.work/images/article_pic_4.jpg"
+            mode="widthFix"/>
+          <text selectable>半音阶口琴结构</text>
+        </view>
+      </view>
 
-			<text class="subtitle" selectable>复音类</text>
-			<view class="parImg">
-				<text class="text_indent" selectable>一把复音口琴的主要部件包括，两个外部盖板、两块铜质簧板、镶嵌在簧板上的簧片、塑质或木质的琴格，这些主要部件由螺丝组装在一起，
-					就是一支完整的复音口琴了。当螺丝被卸掉后口琴就成这些零散的部件了。复音口琴经常使用在传统民族音乐中。</text>
-				<view class="img-box">
-					<image src="http://wtsmartweb.hkfree.work/images/article_pic_5.jpg" mode="widthFix" />
-					<text selectable>复音口琴拆解图</text>
-				</view>
-			</view>
-		</view>
+      <text class="subtitle" selectable>复音类</text>
+      <view class="parImg">
+        <text class="text_indent" selectable>一把复音口琴的主要部件包括，两个外部盖板、两块铜质簧板、镶嵌在簧板上的簧片、塑质或木质的琴格，这些主要部件由螺丝组装在一起，
+          就是一支完整的复音口琴了。当螺丝被卸掉后口琴就成这些零散的部件了。复音口琴经常使用在传统民族音乐中。</text>
+        <view class="img-box">
+          <image
+            src="http://wtsmartweb.hkfree.work/images/article_pic_5.jpg"
+            mode="widthFix"/>
+          <text selectable>复音口琴拆解图</text>
+        </view>
+      </view>
+    </view>
 
-		<!-- 分类部分 -->
-		<view class="classification {{2===activeIndex?'':'isDisplay'}}">
-			<text class="title" selectable>分类</text>
-			<text class="text_indent" selectable>布鲁斯口琴每孔装有一对簧片，演奏者呼气时发一音，吸气时发另一音；半音阶口琴每孔装有两对簧片，有按键与呼吸配合发出4个不同的音。而复音口琴相邻的上下两格音高相同，通过换孔吹吸来吹奏不同的音。口琴19世纪在德国发明，它是以从亚洲带入欧洲的某些口风琴为基础改进的。</text>
-			<text class="text_indent" selectable>按发音方式，又可分为单簧片发音和多簧片发音两种。半音阶、布鲁斯口琴等属于单簧片发音，而复音类、和弦、贝司口琴则属于后者。</text>
+    <!-- 分类部分 -->
+    <view class="classification {{2===activeIndex?'':'isDisplay'}}">
+      <text class="title" selectable>分类</text>
+      <text class="text_indent" selectable>布鲁斯口琴每孔装有一对簧片，演奏者呼气时发一音，吸气时发另一音；半音阶口琴每孔装有两对簧片，有按键与呼吸配合发出4个不同的音。而复音口琴相邻的上下两格音高相同，通过换孔吹吸来吹奏不同的音。口琴19世纪在德国发明，它是以从亚洲带入欧洲的某些口风琴为基础改进的。</text>
+      <text class="text_indent" selectable>按发音方式，又可分为单簧片发音和多簧片发音两种。半音阶、布鲁斯口琴等属于单簧片发音，而复音类、和弦、贝司口琴则属于后者。</text>
 
-			<!-- 全音阶 -->
-			<text class="subtitle" selectable>全音阶</text>
-			<text class="text_indent type-title" selectable>全音阶口琴(Diatonic Harmonica)</text>
-			<view class="parImg QYJ">
-				<view class="img-box">
-					<image src="http://wtsmartweb.hkfree.work/images/article_pic_6.jpg" mode="widthFix" />
-					<text selectable>布鲁斯口琴</text>
-				</view>
-				<text class="text_indent" selectable>这是欧美十分流行的一类口琴。由于最常见的类型具有十个孔的缘故，十孔口琴「10-Holes
-					Harp」又叫布鲁斯口琴/蓝调口琴。此类口琴一孔两个音，多使用Ritcher调音方式——低音没有4和6，却又有两个5。这样的设计原本是考虑到民族音乐的需要同时可以演奏一些和弦而产生。但是压音（Bending）技术的出现，使得原本缺失的音能够演奏，同时也给布鲁斯口琴增添了独有的魅力，甚至可以说，这是布鲁斯口琴之所以成为布鲁斯口琴的原因。这恐怕是设计者当初万万没有想到的。此类口琴的特色在于它的小巧和独特的音色，是一种极为“人性化”的乐器。在布鲁斯音乐中，此类口琴具有和吉他比肩的地位。除此之外，布鲁斯口琴还很适合演奏一些具有民族风味的曲子。此类口琴学习的难度比复音也要大一些，一个重要的原因是压音技术的灵活运用需要长期的练习，同时布鲁斯口琴独特的乐理也需要花一些精力来学习。</text>
-			</view>
-			<text class="text_indent" selectable>随着布鲁斯在欧美地区的流行，继压音技术之后又出现了超吸和超吹（Overdraw、Overblow，统称Overbend），这两种技术可以在布鲁斯口琴上获得压音无法得到的升、降半音。自此，通过Bend技术和Overbend技术的结合，演奏者可以在任意一个调式的布鲁斯口琴上，都可以演奏出12个调性。</text>
-			<text class="text_indent" selectable>全音阶口琴有十个吹孔，每孔吹吸产生两个音，故称十孔口琴，又可以称为民谣/蓝调口琴。这种口琴在欧美极为流行，可以认为它是口琴爱好者中最大的族群。十孔口琴体积很小，携带容易，其音色具有相当的模仿能力，优美中带点忧郁，因此适合蓝调(blues)、摇滚(rock)、乡村(country)、民谣(folk)、爵士(jazz)等风格，也是影视娱乐配乐最常用的口琴。</text>
+      <!-- 全音阶 -->
+      <text class="subtitle" selectable>全音阶</text>
+      <text class="text_indent type-title" selectable>全音阶口琴(Diatonic
+        Harmonica)</text>
+      <view class="parImg QYJ">
+        <view class="img-box">
+          <image
+            src="http://wtsmartweb.hkfree.work/images/article_pic_6.jpg"
+            mode="widthFix"/>
+          <text selectable>布鲁斯口琴</text>
+        </view>
+        <text class="text_indent" selectable>这是欧美十分流行的一类口琴。由于最常见的类型具有十个孔的缘故，十孔口琴「10-Holes
+          Harp」又叫布鲁斯口琴/蓝调口琴。此类口琴一孔两个音，多使用Ritcher调音方式——低音没有4和6，却又有两个5。这样的设计原本是考虑到民族音乐的需要同时可以演奏一些和弦而产生。但是压音（Bending）技术的出现，使得原本缺失的音能够演奏，同时也给布鲁斯口琴增添了独有的魅力，甚至可以说，这是布鲁斯口琴之所以成为布鲁斯口琴的原因。这恐怕是设计者当初万万没有想到的。此类口琴的特色在于它的小巧和独特的音色，是一种极为“人性化”的乐器。在布鲁斯音乐中，此类口琴具有和吉他比肩的地位。除此之外，布鲁斯口琴还很适合演奏一些具有民族风味的曲子。此类口琴学习的难度比复音也要大一些，一个重要的原因是压音技术的灵活运用需要长期的练习，同时布鲁斯口琴独特的乐理也需要花一些精力来学习。</text>
+      </view>
+      <text class="text_indent" selectable>随着布鲁斯在欧美地区的流行，继压音技术之后又出现了超吸和超吹（Overdraw、Overblow，统称Overbend），这两种技术可以在布鲁斯口琴上获得压音无法得到的升、降半音。自此，通过Bend技术和Overbend技术的结合，演奏者可以在任意一个调式的布鲁斯口琴上，都可以演奏出12个调性。</text>
+      <text class="text_indent" selectable>全音阶口琴有十个吹孔，每孔吹吸产生两个音，故称十孔口琴，又可以称为民谣/蓝调口琴。这种口琴在欧美极为流行，可以认为它是口琴爱好者中最大的族群。十孔口琴体积很小，携带容易，其音色具有相当的模仿能力，优美中带点忧郁，因此适合蓝调(blues)、摇滚(rock)、乡村(country)、民谣(folk)、爵士(jazz)等风格，也是影视娱乐配乐最常用的口琴。</text>
 
-			<text class="text_indent type-title" selectable>标准全音阶口琴(Richeter System)</text>
-			<text class="text_indent" selectable>这是标准音阶排列的十孔口琴，估大部分热爱十孔口琴的人士都选用该种口琴，每孔两个音，共20个，约有3个八度。一般十孔口琴有一个共通的特性，就是低音部没有F和A，高音部没有B，这是为了和声上的考虑而特意设计的。吹奏者依然可以运用压音（banding）技术来吹奏出欠缺的音阶。关于这样的音阶设计其实要追溯到1825年一位波希米亚的乐器工匠Richter，改良并创新出现这种音阶排列系统。吹气时发出1、3、5一组音为C和弦，而吸气时发出2、4、6或5、7、2、4一组音构成G7和弦，对于演奏当时的民谣音乐非常适合，尤其适合演奏蓝调音乐。</text>
-			<text class="text_indent" selectable>由于richter
-				system的音阶排列低音部没有F和A，对于演奏民谣或流行音乐时常采用低音部F和A的旋律，会有较大影响。所以口琴爱好者通常会依照自己的喜好和演奏风格自行定制口琴，这类口琴称之为调音全音阶口琴。</text>
+      <text class="text_indent type-title" selectable>标准全音阶口琴(Richeter
+        System)</text>
+      <text class="text_indent" selectable>这是标准音阶排列的十孔口琴，估大部分热爱十孔口琴的人士都选用该种口琴，每孔两个音，共20个，约有3个八度。一般十孔口琴有一个共通的特性，就是低音部没有F和A，高音部没有B，这是为了和声上的考虑而特意设计的。吹奏者依然可以运用压音（banding）技术来吹奏出欠缺的音阶。关于这样的音阶设计其实要追溯到1825年一位波希米亚的乐器工匠Richter，改良并创新出现这种音阶排列系统。吹气时发出1、3、5一组音为C和弦，而吸气时发出2、4、6或5、7、2、4一组音构成G7和弦，对于演奏当时的民谣音乐非常适合，尤其适合演奏蓝调音乐。</text>
+      <text class="text_indent" selectable>由于richter
+        system的音阶排列低音部没有F和A，对于演奏民谣或流行音乐时常采用低音部F和A的旋律，会有较大影响。所以口琴爱好者通常会依照自己的喜好和演奏风格自行定制口琴，这类口琴称之为调音全音阶口琴。</text>
 
-			<!-- 半音阶 -->
-			<text class="subtitle" selectable>半音阶</text>
-			<text class="text_indent type-title" selectable>半音阶口琴(Chromatic Harmonica)</text>
-			<text class="text_indent" selectable>这种口琴包含完整的半音音阶，可以用一只口琴演奏任何调的乐曲。半音阶口琴包括所有升降半音的12个音的半音音阶。半音阶口琴每个孔4个簧片，其中两个正常音高，两个为半音。通过在口琴一边的按钮切换正常音与半音。半音阶口琴适合演奏爵士乐（jazz），古典音乐(classic)，布鲁斯音乐(blues)与流行音乐。</text>
-			<view class="parImg BYJ">
-				<view class="img-box">
-					<image src="http://wtsmartweb.hkfree.work/images/article_pic_7.jpg" mode="widthFix" />
-					<text>半音阶口琴</text>
-				</view>
-				<text class="text_indent">半音阶口琴是比十孔口琴更加严肃一些的乐器。完整的半音阶，最大可达四个八度以上的音域，使得诞生时间并不算长的半音阶口琴在正规乐器中占有一席之地。虽然不是传统交响乐团中的正式成员，但在许多口琴大师的努力下，半音阶口琴在室内乐等领域已有一定地位，国内外亦有以半音阶口琴为主音，由和弦、贝司口琴等组成的乐团活跃。常见的半音阶口琴为一孔四音，吹吸音成二度关系，按下变音键则每个音都升高半音。至于孔数则有8、10、12、14、16等多种，音域为二到四个八度，大部分为C调。由于可以演奏音域内的所有半音，此类口琴适合演奏比较复杂的乐曲。半音阶口琴的学习门槛比复音琴要高一些，一方面是乐理上的难度要大一些，另一方面也有吹奏难度上的原因：演奏半音阶对气息控制的要求比复音高得多，同时要求用气、移琴与按键的严格配合。另外，由于生产工艺、成本等原因，也有部分厂家生产一孔两音的半音阶口琴。常见的有国产的24孔48音琴，日本产的17孔、22孔琴等。还有一类独特的半音阶口琴，类似复音琴有两排孔，上面一排比下面一排高半音。一般认为，一孔四音的设计比较正规。据我所知，比较知名的演奏家中尚无选用后面两种琴的先例。</text>
-			</view>
+      <!-- 半音阶 -->
+      <text class="subtitle" selectable>半音阶</text>
+      <text class="text_indent type-title" selectable>半音阶口琴(Chromatic
+        Harmonica)</text>
+      <text class="text_indent" selectable>这种口琴包含完整的半音音阶，可以用一只口琴演奏任何调的乐曲。半音阶口琴包括所有升降半音的12个音的半音音阶。半音阶口琴每个孔4个簧片，其中两个正常音高，两个为半音。通过在口琴一边的按钮切换正常音与半音。半音阶口琴适合演奏爵士乐（jazz），古典音乐(classic)，布鲁斯音乐(blues)与流行音乐。</text>
+      <view class="parImg BYJ">
+        <view class="img-box">
+          <image
+            src="http://wtsmartweb.hkfree.work/images/article_pic_7.jpg"
+            mode="widthFix"/>
+          <text>半音阶口琴</text>
+        </view>
+        <text class="text_indent">半音阶口琴是比十孔口琴更加严肃一些的乐器。完整的半音阶，最大可达四个八度以上的音域，使得诞生时间并不算长的半音阶口琴在正规乐器中占有一席之地。虽然不是传统交响乐团中的正式成员，但在许多口琴大师的努力下，半音阶口琴在室内乐等领域已有一定地位，国内外亦有以半音阶口琴为主音，由和弦、贝司口琴等组成的乐团活跃。常见的半音阶口琴为一孔四音，吹吸音成二度关系，按下变音键则每个音都升高半音。至于孔数则有8、10、12、14、16等多种，音域为二到四个八度，大部分为C调。由于可以演奏音域内的所有半音，此类口琴适合演奏比较复杂的乐曲。半音阶口琴的学习门槛比复音琴要高一些，一方面是乐理上的难度要大一些，另一方面也有吹奏难度上的原因：演奏半音阶对气息控制的要求比复音高得多，同时要求用气、移琴与按键的严格配合。另外，由于生产工艺、成本等原因，也有部分厂家生产一孔两音的半音阶口琴。常见的有国产的24孔48音琴，日本产的17孔、22孔琴等。还有一类独特的半音阶口琴，类似复音琴有两排孔，上面一排比下面一排高半音。一般认为，一孔四音的设计比较正规。据我所知，比较知名的演奏家中尚无选用后面两种琴的先例。</text>
+      </view>
 
-			<!-- 复音类 -->
-			<text class="subtitle"> selectable复音类</text>
-			<text class="text_indent type-title" selectable>复音口琴（Tremolo Harmonica）</text>
-			<view class="parImg FYL">
-				<view class="img-box">
-					<image src="http://wtsmartweb.hkfree.work/images/article_pic_8.jpg" mode="widthFix" />
-					<text>复音口琴</text>
-				</view>
-				<text class="text_indent">复音口琴又称震音口琴，是由双排吹孔构成的全音阶口琴，其上排簧片和下排簧片的音高（pitch）会被调整至有些微差距，每个音由相同音高的两个簧片发出。由于这两个簧片同时为吹孔或吸孔，演奏时两个簧片同时共鸣震动，两个簧片音高的细微差别会产生一种动听的震音效果。这种口琴较适合演奏民谣（folk）和乡村音乐（country），如拉丁美洲（Latin
-					America），亚洲（Asia），欧洲（Europe）民歌。</text>
-			</view>
-			<text class="text_indent" selectable>复音口琴一般有16到28孔，其中以24孔为国内最常见。日本复音琴又常见21孔。复音琴孔分为上下两排，一般吹奏时，同一孔中上下两个簧片同时发声。由于两个簧片振动频率有细微差别，同时振动会产生物理上叫做“拍”的现象，表现为声音强弱的周期性变化，也就是所谓的“震音”。国外被称为“Tremolo”。复音口琴的优点是结构简单而固定，也不需要复杂的技巧，且复音口琴种类、调性齐全，音色清脆嘹亮，音量大，具有很强的穿透力，适合一些民族风格，是初学者的一个好选择。重音、回声口琴可认为是复音口琴的变种，同属于复音类。前者上下两个簧片成八度关系，音色丰满圆润；后者具有筒形的琴盖板（琴壳），具有独特的共鸣效果，可以演奏两声部。</text>
-			<!-- 循环渲染相同的结构 -->
-			<block wx:for="{{fuyinList}}" wx:key="index">
-				<text class="text_indent type-title" selectable>{{item.title}}</text>
-				<view class="parImg type-body">
-					<!-- 有图片展示的段落留出图片的位置并添加图片，没有图片的段落不预留图片的位置 -->
-					<view class="img-box" wx:if="{{item.flag}}">
-						<image src="{{item.imgUrl}}" mode="widthFix" />
-						<text selectable>{{item.imgName}}</text>
-					</view>
-					<text class="text_indent" selectable>{{item.content}}</text>
-				</view>
-			</block>
+      <!-- 复音类 -->
+      <text class="subtitle"> selectable复音类</text>
+      <text class="text_indent type-title" selectable>复音口琴（Tremolo
+        Harmonica）</text>
+      <view class="parImg FYL">
+        <view class="img-box">
+          <image
+            src="http://wtsmartweb.hkfree.work/images/article_pic_8.jpg"
+            mode="widthFix"/>
+          <text>复音口琴</text>
+        </view>
+        <text class="text_indent">复音口琴又称震音口琴，是由双排吹孔构成的全音阶口琴，其上排簧片和下排簧片的音高（pitch）会被调整至有些微差距，每个音由相同音高的两个簧片发出。由于这两个簧片同时为吹孔或吸孔，演奏时两个簧片同时共鸣震动，两个簧片音高的细微差别会产生一种动听的震音效果。这种口琴较适合演奏民谣（folk）和乡村音乐（country），如拉丁美洲（Latin
+          America），亚洲（Asia），欧洲（Europe）民歌。</text>
+      </view>
+      <text class="text_indent" selectable>复音口琴一般有16到28孔，其中以24孔为国内最常见。日本复音琴又常见21孔。复音琴孔分为上下两排，一般吹奏时，同一孔中上下两个簧片同时发声。由于两个簧片振动频率有细微差别，同时振动会产生物理上叫做“拍”的现象，表现为声音强弱的周期性变化，也就是所谓的“震音”。国外被称为“Tremolo”。复音口琴的优点是结构简单而固定，也不需要复杂的技巧，且复音口琴种类、调性齐全，音色清脆嘹亮，音量大，具有很强的穿透力，适合一些民族风格，是初学者的一个好选择。重音、回声口琴可认为是复音口琴的变种，同属于复音类。前者上下两个簧片成八度关系，音色丰满圆润；后者具有筒形的琴盖板（琴壳），具有独特的共鸣效果，可以演奏两声部。</text>
+      <!-- 循环渲染相同的结构 -->
+      <block wx:for="{{fuyinList}}" wx:key="index">
+        <text class="text_indent type-title"
+              selectable>{{item.title}}</text>
+        <view class="parImg type-body">
+          <!-- 有图片展示的段落留出图片的位置并添加图片，没有图片的段落不预留图片的位置 -->
+          <view class="img-box" wx:if="{{item.flag}}">
+            <image src="{{item.imgUrl}}" mode="widthFix"/>
+            <text selectable>{{item.imgName}}</text>
+          </view>
+          <text class="text_indent" selectable>{{item.content}}</text>
+        </view>
+      </block>
 
-			<!-- 合奏类 -->
-			<text class="subtitle" selectable>合奏类</text>
-			<!-- 循环渲染相同的结构 -->
-			<block wx:for="{{hezouList}}" wx:key="index">
-				<text class="text_indent type-title" selectable>{{item.title}}</text>
-				<view class="parImg type-body">
-					<!-- 有图片展示的段落留出图片的位置并添加图片，没有图片的段落不预留图片的位置 -->
-					<view class="img-box" wx:if="{{item.flag}}">
-						<image src="{{item.imgUrl}}" mode="widthFix" />
-						<text selectable>{{item.imgName}}</text>
-					</view>
-					<text class="text_indent" selectable>{{item.content}}</text>
-				</view>
-			</block>
-		</view>
+      <!-- 合奏类 -->
+      <text class="subtitle" selectable>合奏类</text>
+      <!-- 循环渲染相同的结构 -->
+      <block wx:for="{{hezouList}}" wx:key="index">
+        <text class="text_indent type-title"
+              selectable>{{item.title}}</text>
+        <view class="parImg type-body">
+          <!-- 有图片展示的段落留出图片的位置并添加图片，没有图片的段落不预留图片的位置 -->
+          <view class="img-box" wx:if="{{item.flag}}">
+            <image src="{{item.imgUrl}}" mode="widthFix"/>
+            <text selectable>{{item.imgName}}</text>
+          </view>
+          <text class="text_indent" selectable>{{item.content}}</text>
+        </view>
+      </block>
+    </view>
 
-		<!-- 维护部分 -->
-		<view class="maintenance {{3===activeIndex?'':'isDisplay'}}">
-			<text class="title" selectable>维护</text>
-			<text class="text_indent" selectable>首先应该知道口琴的发声部分是固定在簧板（plate）上的簧片（reed），在布鲁斯口琴中，这些簧片通常是很小的，因而一些细小的附着物既可导致这些簧片发音不正，维护保养口琴，在很大程度上说是在保护这些簧片的清洁。</text>
-			<text class="text_indent" selectable>下面是关于口琴维护保养的一些窍门。</text>
-			<block wx:for="{{weihuList}}" wx:key="index">
-				<text class="text_indent weihu-body" selectable>（{{ index + 1 }}）{{ item }}</text>
-			</block>
-		</view>
-	</view>
+    <!-- 维护部分 -->
+    <view class="maintenance {{3===activeIndex?'':'isDisplay'}}">
+      <text class="title" selectable>维护</text>
+      <text class="text_indent" selectable>首先应该知道口琴的发声部分是固定在簧板（plate）上的簧片（reed），在布鲁斯口琴中，这些簧片通常是很小的，因而一些细小的附着物既可导致这些簧片发音不正，维护保养口琴，在很大程度上说是在保护这些簧片的清洁。</text>
+      <text class="text_indent"
+            selectable>下面是关于口琴维护保养的一些窍门。</text>
+      <block wx:for="{{weihuList}}" wx:key="index">
+        <text class="text_indent weihu-body" selectable>（{{ index + 1
+          }}）{{ item }}</text>
+      </block>
+    </view>
+  </view>
 </view>

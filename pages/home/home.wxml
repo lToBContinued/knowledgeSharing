@@ -1,22 +1,22 @@
 <view class="body">
-	<view 
-		class="bigBtn shadow {{shadowClass1}}" 
-		id="1" 
-		bind:touchstart="tapBtn" 
-		bind:touchend="releaseBtn" 
-		bind:tap="goToBaike"
-	>
-		<image src="../../icons/icon_baike.png" mode="" />
-		<text>口琴百科</text>
-	</view>
-	<view
-		class="video shadow {{shadowClass2}}"
-		id="2"
-		bind:touchstart="tapBtn"
-		bind:touchend="releaseBtn"
-		bind:tap="goToSound"
-	>
-		<image src="../../icons/select_icon-sound.png" mode="" />
-		<text>音乐欣赏</text>
-	</view>
+  <view
+    class="bigBtn shadow {{shadowClass1}}"
+    id="1"
+    bind:touchstart="tapBtn"
+    bind:touchend="releaseBtn"
+    bind:tap="goToBaike"
+  >
+    <image src="../../icons/icon_baike.png" mode=""/>
+    <text>口琴百科</text>
+  </view>
+  <view
+    class="video shadow {{shadowClass2}}"
+    id="2"
+    bind:touchstart="tapBtn"
+    bind:touchend="releaseBtn"
+    bind:tap="goToSound"
+  >
+    <image src="../../icons/select_icon-sound.png" mode=""/>
+    <text>音乐欣赏</text>
+  </view>
 </view>

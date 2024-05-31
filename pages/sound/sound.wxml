@@ -1,94 +1,108 @@
-<swiper indicator-color="rgba(255,255,255,.5)" indicator-active-color="#fff" indicator-dots circular autoplay>
-	<swiper-item>
-		<image src="http://wtsmartweb.hkfree.work/images/music_swiper_pic1.png" />
-	</swiper-item>
-	<swiper-item>
-		<image src="http://wtsmartweb.hkfree.work/images/music_swiper_pic2.png" />
-	</swiper-item>
-	<swiper-item>
-		<image src="http://wtsmartweb.hkfree.work/images/music_swiper_pic3.png" />
-	</swiper-item>
+<swiper indicator-color="rgba(255,255,255,.5)" indicator-active-color="#fff"
+        indicator-dots circular autoplay>
+  <swiper-item>
+    <image src="http://wtsmartweb.hkfree.work/images/music_swiper_pic1.png"/>
+  </swiper-item>
+  <swiper-item>
+    <image src="http://wtsmartweb.hkfree.work/images/music_swiper_pic2.png"/>
+  </swiper-item>
+  <swiper-item>
+    <image src="http://wtsmartweb.hkfree.work/images/music_swiper_pic3.png"/>
+  </swiper-item>
 </swiper>
 
-<!-- 音乐列表 -->
+  <!-- 音乐列表 -->
 <view class="musicContent">
-	<!-- 半音阶 -->
-	<view class="part">
-		<text class="part-title">半音阶口琴音乐</text>
-		<block wx:for="{{musicList[0]}}" wx:key="{{item.id}}">
-			<view class="music-select" data-group="0" data-id="{{index}}" bind:tap="playMusic">
-				<image src="{{item.coverImgUrl}}" />
-				<view class="music-info">
-					<view class="music-info-title">{{item.title}}</view>
-					<view class="music-info-singer">{{item.singer}}</view>
-				</view>
-			</view>
-		</block>
-	</view>
+  <!-- 半音阶 -->
+  <view class="part">
+    <text class="part-title">半音阶口琴音乐</text>
+    <block wx:for="{{musicList[0]}}" wx:key="{{item.id}}">
+      <view class="music-select" data-group="0" data-id="{{index}}"
+            bind:tap="playMusic">
+        <image src="{{item.coverImgUrl}}"/>
+        <view class="music-info">
+          <view class="music-info-title">{{item.title}}</view>
+          <view class="music-info-singer">{{item.singer}}</view>
+        </view>
+      </view>
+    </block>
+  </view>
 
-	<view class="part">
-		<text class="part-title">复音口琴音乐</text>
-		<block wx:for="{{musicList[1]}}" wx:key="{{item.id}}">
-			<view class="music-select" data-group="1" data-id="{{index}}" bind:tap="playMusic">
-				<image src="{{item.coverImgUrl}}" />
-				<view class="music-info">
-					<view class="music-info-title">{{item.title}}</view>
-					<view class="music-info-singer">{{item.singer}}</view>
-				</view>
-			</view>
-		</block>
-	</view>
+  <view class="part">
+    <text class="part-title">复音口琴音乐</text>
+    <block wx:for="{{musicList[1]}}" wx:key="{{item.id}}">
+      <view class="music-select" data-group="1" data-id="{{index}}"
+            bind:tap="playMusic">
+        <image src="{{item.coverImgUrl}}"/>
+        <view class="music-info">
+          <view class="music-info-title">{{item.title}}</view>
+          <view class="music-info-singer">{{item.singer}}</view>
+        </view>
+      </view>
+    </block>
+  </view>
 
-	<view class="part">
-		<text class="part-title">布鲁斯口琴音乐</text>
-		<block wx:for="{{musicList[2]}}" wx:key="{{item.id}}">
-			<view class="music-select" data-group="2" data-id="{{index}}" bind:tap="playMusic">
-				<image src="{{item.coverImgUrl}}" />
-				<view class="music-info">
-					<view class="music-info-title">{{item.title}}</view>
-					<view class="music-info-singer">{{item.singer}}</view>
-				</view>
-			</view>
-		</block>
-	</view>
+  <view class="part">
+    <text class="part-title">布鲁斯口琴音乐</text>
+    <block wx:for="{{musicList[2]}}" wx:key="{{item.id}}">
+      <view class="music-select" data-group="2" data-id="{{index}}"
+            bind:tap="playMusic">
+        <image src="{{item.coverImgUrl}}"/>
+        <view class="music-info">
+          <view class="music-info-title">{{item.title}}</view>
+          <view class="music-info-singer">{{item.singer}}</view>
+        </view>
+      </view>
+    </block>
+  </view>
 </view>
 <view style="height: 1rpx;"></view>
 
-<!-- 播放器控件 -->
+  <!-- 播放器控件 -->
 <view>
-	<view class="player">
-		<!-- 空白封面 -->
-		<view>
-			<image class="cover" src="{{playMsg.coverImgUrl}}" />
-		</view>
-		<!-- 歌曲信息 -->
-		<view class="player-info">
-			<view class="player-info-title">{{playMsg.title}}</view>
-			<view class="player-info-singer">{{playMsg.singer}}</view>
-		</view>
-		<!-- 控制台 -->
-		<view class="player-controls">
-			<!-- 上一曲 -->
-			<image class="prev" src="http://wtsmartweb.hkfree.work/icons/%E4%B8%8A%E4%B8%80%E6%9B%B2.png" bind:tap="prev" />
-			<!-- 播放 -->
-			<image class="play {{state?'':'isPlay'}}" src="http://wtsmartweb.hkfree.work/icons/%E6%92%AD%E6%94%BE.png" bind:tap="play" />
-			<!-- 暂停 -->
-			<image class="pause  {{state?'isPlay':''}}" src="http://wtsmartweb.hkfree.work/icons/%E6%9A%82%E5%81%9C.png" bind:tap="play" />
-			<!-- 下一曲 -->
-			<image class="next" src="http://wtsmartweb.hkfree.work/icons/%E4%B8%8B%E4%B8%80%E6%9B%B2.png" bind:tap="next" />
-		</view>
+  <view class="player">
+    <!-- 空白封面 -->
+    <view>
+      <image class="cover" src="{{playMsg.coverImgUrl}}"/>
+    </view>
+    <!-- 歌曲信息 -->
+    <view class="player-info">
+      <view class="player-info-title">{{playMsg.title}}</view>
+      <view class="player-info-singer">{{playMsg.singer}}</view>
+    </view>
+    <!-- 控制台 -->
+    <view class="player-controls">
+      <!-- 上一曲 -->
+      <image class="prev"
+             src="http://wtsmartweb.hkfree.work/icons/%E4%B8%8A%E4%B8%80%E6%9B%B2.png"
+             bind:tap="prev"/>
+      <!-- 播放 -->
+      <image class="play {{state?'':'isPlay'}}"
+             src="http://wtsmartweb.hkfree.work/icons/%E6%92%AD%E6%94%BE.png"
+             bind:tap="play"/>
+      <!-- 暂停 -->
+      <image class="pause  {{state?'isPlay':''}}"
+             src="http://wtsmartweb.hkfree.work/icons/%E6%9A%82%E5%81%9C.png"
+             bind:tap="play"/>
+      <!-- 下一曲 -->
+      <image class="next"
+             src="http://wtsmartweb.hkfree.work/icons/%E4%B8%8B%E4%B8%80%E6%9B%B2.png"
+             bind:tap="next"/>
+    </view>
 
-		<!-- 进度条 -->
-		<view class="body-view">
-			<!-- 当前时间 -->
-			<text class="current-time">{{sliderTimeInfo.currentTime}}</text>
-			<!-- 进度显示 -->
-			<view class="slider">
-				<!-- 进度条max值是音乐长度，进度条value值是音乐当前进度 -->
-				<slider bindchange="sliderChange" min="0" max="{{playMsg.durationSec}}" step="0.1" block-size="12" activeColor="#6894FF" value="{{sliderTimeInfo.currentTimeSec}}" />
-			</view>
-			<!-- 音乐的总时长 -->
-			<text class="duration-time">{{playMsg.duration}}</text> <!-- 总时间 -->
-		</view>
-	</view>
+    <!-- 进度条 -->
+    <view class="body-view">
+      <!-- 当前时间 -->
+      <text class="current-time">{{sliderTimeInfo.currentTime}}</text>
+      <!-- 进度显示 -->
+      <view class="slider">
+        <!-- 进度条max值是音乐长度，进度条value值是音乐当前进度 -->
+        <slider bindchange="sliderChange" min="0" max="{{playMsg.durationSec}}"
+                step="0.1" block-size="12" activeColor="#6894FF"
+                value="{{sliderTimeInfo.currentTimeSec}}"/>
+      </view>
+      <!-- 音乐的总时长 -->
+      <text class="duration-time">{{playMsg.duration}}</text> <!-- 总时间 -->
+    </view>
+  </view>
 </view>
